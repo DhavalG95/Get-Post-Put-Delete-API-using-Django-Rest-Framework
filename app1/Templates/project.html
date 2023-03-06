@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div style="background-color: rgb(102, 48, 48); color: beige;">
+    <div class=" container-fluid">
+        {% if user.is_authenticated %}
+        {% for i in data %}
+        <div class="container">
+
+            <h1 style="color: rgb(20, 20, 13); background-color:rgb(140, 163, 158) ;">{{i.project_name}}</h1>
+            <h4 style="color: rgb(185, 185, 164); background-color:rgb(60, 170, 146) ;">{{i.client}}</h4>
+            <h6 style="color: rgb(20, 20, 13); background-color:rgb(140, 163, 158) ;">{{i.created_at}}</h6>
+            <h6 style="color: rgb(20, 20, 13); background-color:rgb(140, 163, 158) ;">{{i.created_by}}</h6>
+           
+        </div>
+        <br />
+        <br />
+        {%endfor%}
+
+
+        {% else %}
+        <div>
+            <h3>“Sorry, You Are Not Allowed to Access This Page” !</h3>
+            <br />
+            <h5>Please <button class="btn btn-outline-success "><a class="nav-link"
+                        href="{% url 'register' %}">Signup</a></button> Or <button class="btn btn-outline-success "><a
+                        class="nav-link" href="{% url 'login' %}">Login</a></button> To Access This Page</h5>
+
+
+        </div>
+        {% endif %}
+
+
+    </div>
+</div>
+{% endblock %}
